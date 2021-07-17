@@ -8,5 +8,6 @@ A few notes about the solution:
 - For this requirement: "input should be the following two pieces information: User Id and Date time" I assumed that these inputs would be provided by services (current user, current time, etc.), so for these roles I created 2 interfaces: IUserProvider and ICurrentTimeProvider
 - PasswordGenerator simply concatenates the user id and date time, in a real project this algorithm would of course be much more sophisticated
 - IPasswordStore could be a relational database, a NoSQL database, etc., but for this example I made a very simple in-memory implementation
+- For simplicity the in-memory store implementation uses an IDictionary<string, StoredPassword>, making use of the assumption that the password will be automatically generated and always unique. If passwords are not unique, instead of Dictionary we could use a Tuple and the implementation would be a little more complex because we would need to handle a few more cases.
 - ISettingsProvider could also be stored in a config file, relational database, etc., for this example I chose the simplest solution
 
